@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Collapse } from '@mui/material';
+import { Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Collapse, Button } from '@mui/material';
 import { styled } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+import imagenAuriculares from '../imagenes/01.jpg';
+
 const StyledCard = styled(Card)({
   maxWidth: 345,
-  // Estilos adicionales que desees aplicar al Card
 });
 
 const Producto = () => {
   const [expanded, setExpanded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false); // Estado para controlar el corazón
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleBuy = () => {
+    // Lógica para la compra del producto
+    console.log('Producto comprado');
+  };
+
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite); // Cambia el estado del corazón al hacer clic
   };
 
   return (
@@ -32,17 +43,20 @@ const Producto = () => {
       <CardMedia
         component="img"
         height="194"
-        image="/components/imagenes/02.jpg"
+        image={imagenAuriculares}
         alt="Auriculares"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           Auriculares In-ear Inalámbricos Xiaomi Redmi Buds 4 Lite Negro
         </Typography>
+        <Typography variant="h6" color="text.primary">
+          $3500 {/* Precio del producto */}
+        </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="agregar a favoritos">
-          <FavoriteIcon />
+        <IconButton aria-label="agregar a favoritos" onClick={handleFavoriteClick}>
+          <FavoriteIcon style={{ color: isFavorite ? 'red' : 'black' }} />
         </IconButton>
         <IconButton aria-label="compartir">
           <ShareIcon />
@@ -60,6 +74,11 @@ const Producto = () => {
         <CardContent>
           <Typography paragraph>Método:</Typography>
         </CardContent>
+        <CardActions disableSpacing>
+          <Button variant="contained" color="primary" onClick={handleBuy}>
+            Comprar
+          </Button>
+        </CardActions>
       </Collapse>
     </StyledCard>
   );
