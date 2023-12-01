@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Collapse, Button, Box } from '@mui/material';
+import { Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Collapse, Button, } from '@mui/material';
 import { styled } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
@@ -15,6 +15,7 @@ const StyledCard = styled(Card)({
 const Producto = () => {
   const [expanded, setExpanded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false); // Estado para controlar el corazón
+  const [purchased, setPurchased] = useState(false); // Estado para controlar la compra
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -22,7 +23,7 @@ const Producto = () => {
 
   const handleBuy = () => {
     // Lógica para la compra del producto
-    console.log('Producto comprado');
+    setPurchased(true); // Establece el estado de compra a verdadero
   };
 
   const handleFavoriteClick = () => {
@@ -47,17 +48,19 @@ const Producto = () => {
         alt="Auriculares"
       />
       <CardContent>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-          <Typography variant="body2" color="text.secondary">
-            Auriculares In-ear Inalámbricos Xiaomi Redmi Buds 4 Lite Negro
-          </Typography>
-          <Typography variant="h6" color="text.primary">
-            $3500 {/* Precio del producto */}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            SKU: AU IN BT 01 {/* SKU del producto */}
-          </Typography>
-        </Box>
+        {/* Mostrar datos del producto */}
+        <Typography variant="body2" color="text.secondary">
+          Auriculares In-ear Inalámbricos Xiaomi Redmi Buds 4 Lite Negro {/* Descripción del producto */}
+        </Typography>
+        <Typography variant="h6" color="text.primary">
+          $3500 {/* Precio del producto */}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          SKU: AU IN BT 01 {/* SKU del producto */}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Cantidad disponible: 15 {/* Cantidad disponible */}
+        </Typography>
       </CardContent>
       <CardActions disableSpacing sx={{ justifyContent: 'center' }}>
         <IconButton aria-label="agregar a favoritos" onClick={handleFavoriteClick}>
@@ -80,10 +83,17 @@ const Producto = () => {
           <Typography paragraph>Método:</Typography>
         </CardContent>
         <CardActions disableSpacing sx={{ justifyContent: 'center' }}>
+          {/* Botón de compra */}
           <Button variant="contained" color="primary" onClick={handleBuy}>
             Comprar
           </Button>
         </CardActions>
+        {/* Mensaje de agradecimiento */}
+        {purchased && (
+          <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
+            Gracias por su compra
+          </Typography>
+        )}
       </Collapse>
     </StyledCard>
   );
