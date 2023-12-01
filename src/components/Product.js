@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Collapse, Button } from '@mui/material';
+import { Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Typography, Collapse, Button, Box } from '@mui/material';
 import { styled } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
@@ -47,14 +47,19 @@ const Producto = () => {
         alt="Auriculares"
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          Auriculares In-ear Inalámbricos Xiaomi Redmi Buds 4 Lite Negro
-        </Typography>
-        <Typography variant="h6" color="text.primary">
-          $3500 {/* Precio del producto */}
-        </Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+          <Typography variant="body2" color="text.secondary">
+            Auriculares In-ear Inalámbricos Xiaomi Redmi Buds 4 Lite Negro
+          </Typography>
+          <Typography variant="h6" color="text.primary">
+            $3500 {/* Precio del producto */}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            SKU: AU IN BT 01 {/* SKU del producto */}
+          </Typography>
+        </Box>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions disableSpacing sx={{ justifyContent: 'center' }}>
         <IconButton aria-label="agregar a favoritos" onClick={handleFavoriteClick}>
           <FavoriteIcon style={{ color: isFavorite ? 'red' : 'black' }} />
         </IconButton>
@@ -74,7 +79,7 @@ const Producto = () => {
         <CardContent>
           <Typography paragraph>Método:</Typography>
         </CardContent>
-        <CardActions disableSpacing>
+        <CardActions disableSpacing sx={{ justifyContent: 'center' }}>
           <Button variant="contained" color="primary" onClick={handleBuy}>
             Comprar
           </Button>
