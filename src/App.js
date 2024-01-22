@@ -1,13 +1,13 @@
 // App.js
 
 import React from 'react';
-import ProductCard from './components/ProductCard';
+import ProductList from './components/ProductList';
 
 function App() {
   return (
     <div>
-      <h1>Nannys Revendedoras</h1>
-      <ProductCard />
+      <h1>Ventas Mayoristas</h1>
+      <ProductList />
     </div>
   );
 }
