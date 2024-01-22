@@ -1,5 +1,3 @@
-¡Por supuesto! Aquí tienes un ejemplo de cómo podrías estructurar tu README.md con las secciones adicionales:
-
 ```markdown
 # Detalle de Producto en E-commerce
 
